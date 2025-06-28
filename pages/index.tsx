@@ -1,10 +1,13 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '@/styles/Home.module.css'
-import { GradientBackgroundCon } from '@/components/QuoteGenerator/QuoteGeneratorElements'
-
+import { BackgroundImageOne, BackgroundImageTwo, FooterCon, FooterLink, GenerateQuoteButton, GenerateQuoteButtonText, GradientBackgroundCon, QuoteGeneratorCon, QuoteGeneratorInnerCon, QuoteGeneratorSubtitle, QuoteGeneratorTitle, SlateSpan } from '@/components/QuoteGenerator/QuoteGeneratorElements'
+import CloudsOne from '../assets/cloudy.jpg'
+import CloudsTwo from '../assets/sunny.jpg'
+import { useState } from 'react'
 
 export default function Home() {
+  const [numberOfQuotes, setNumberOfQuotes] = useState<Number | null>(0)
   return (
     <>
       <Head>
@@ -13,7 +16,32 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <GradientBackgroundCon></GradientBackgroundCon>
+      <GradientBackgroundCon>
+        <QuoteGeneratorCon>
+          <QuoteGeneratorInnerCon>
+            <QuoteGeneratorTitle>
+              Daily inspiration generator
+            </QuoteGeneratorTitle>
+            <QuoteGeneratorSubtitle>
+              looking for a splash of inspiration generate a quote card with a random
+              inspirational quote provided by <FooterLink href='https://zenquotes.io' target='_blank'
+                rel='noopener noreferrer'>zenquotes API</FooterLink>
+            </QuoteGeneratorSubtitle>
+            <GenerateQuoteButton>
+              <GenerateQuoteButtonText onClick={null}>make a quote</GenerateQuoteButtonText>
+            </GenerateQuoteButton>
+          </QuoteGeneratorInnerCon>
+        </QuoteGeneratorCon>
+        <BackgroundImageOne src={CloudsOne} height='300' alt='cloudy'></BackgroundImageOne>
+        <BackgroundImageTwo src={CloudsTwo} height='300' alt='cloudy'></BackgroundImageTwo>
+        <FooterCon>
+          <>
+            Quotes Generated:{numberOfQuotes}
+            <br></br>
+            developed with <SlateSpan>nextjs</SlateSpan> by <FooterLink href='www.google.com' target='_blank' rel='noopener noreferrer'>@cesteam</FooterLink>
+          </>
+        </FooterCon>
+      </GradientBackgroundCon>
     </>
   )
 }
